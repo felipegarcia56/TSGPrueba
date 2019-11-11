@@ -1,0 +1,97 @@
+<div class="container pt-5 mt-5 card">
+	<div class="row pt-3 pb-5">
+		<div class="col">
+			<h5 class="text-center">Responsables</h5>
+		</div>
+	</div>
+	<div class="row text-center">
+		<div class="col-sm-4 col-md-4 col-lg-4"></div>		
+		<div class="col-sm-4 col-md-4 col-lg-4 text-center">
+			<label class="label">Tipo de Responsable</label>
+			<select class="center form-control form-control-sm w-75 mx-auto" [(ngModel)]="tipoSeleccionado">	
+				<option *ngFor="let tipoResp of tipoResp" [value] = "tipoResp.tipo">
+					{{tipoResp.tipo}}
+				</option>
+			</select>
+		</div>
+		<div class="col-sm-4 col-md-4 col-lg-4"></div>
+	</div>
+	<div class="row p-3">
+		<div class="col-sm-2 col-md-2 col-lg-2"></div>		
+		<div class="col-sm-8 col-md-8 col-lg-8 mx-auto">
+			<form class="form-inline mx-auto" [formGroup]="createForm" (ngSubmit)="crearRegistro(createForm.value)">
+				<div class="form-group" style="display: contents;" >
+					<div  *ngIf="tipoSeleccionado=='persona'">
+						<label class="label label-default px-3 mx-2">Nombre: </label>
+						<input class="form-control form-control-sm px-3 mx-2" type="text" formControlName="nombre">
+					</div>
+				</div>
+				<div class="form-group" style="display: contents;" >
+					<div  *ngIf="tipoSeleccionado=='persona'">
+						<label class="label label-default px-3 mx-2">Apellido: </label>
+						<input class="form-control form-control-sm px-3 mx-2" type="text" formControlName="apellido">
+					</div>
+				</div>
+				<div class="form-group" style="display: contents;" >
+					<div  *ngIf="tipoSeleccionado=='area'">
+						<label class="label label-default px-3 mx-2">Area: </label>
+						<input class="form-control form-control-sm px-3 mx-2" type="text" formControlName="descripcion">
+					</div>
+				</div>				
+				<div class="form-group" style="display: contents;">
+					<div  *ngIf="tipoSeleccionado=='persona' || tipoSeleccionado=='area'">
+						<label class="label label-default px-3 mx-2">Telefono: </label>
+						<input class="form-control form-control-sm px-3 mx-2" type="text" formControlName="telefono">
+					</div>
+				</div>
+				<div class="form-group" style="display: contents;" >
+					<div class="row w-100 p-3">
+						<div class="col text-center">
+							<button class="btn btn-sm btn-success px-3 mx-2" type="submit">Crear</button>	
+						</div>
+					</div>
+				</div>
+				
+			</form>	
+		</div>
+		<div class="col-sm-2 col-md-2 col-lg-2"></div>		
+
+	</div>
+	<div class="row" style="position: relative">
+		
+		<table class="table table-striped">
+			<thead>
+				<tr>
+				  	<th scope="col">Nombre</th>
+				  	<th scope="col">Apellido</th>
+				  	<th scope="col">Area</th>
+				  	<th scope="col">Teléfono</th>
+				  	<th scope="col">Actualizar</th>
+				  	<th scope="col">Borrar</th>	
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor='let responsable of responsablesArr'>
+					<td>
+				    	<input class="form-control form-control-sm" [disabled]="responsable.area.descripcion?true:false" type="text" [(ngModel)]="responsable.persona.nombre">
+				  	</td>
+					<td>
+				    	<input class="form-control form-control-sm" [disabled]="responsable.area.descripcion?true:false" type="text" [(ngModel)]="responsable.persona.apellido">
+				  	</td>
+				  	<td>
+				    	<input class="form-control form-control-sm" [disabled]="responsable.persona.nombre?true:false" type="text" [(ngModel)]="responsable.area.descripcion">
+				  	</td>
+				  	<td>
+				    	<input class="form-control form-control-sm" type="text" [(ngModel)]="responsable.responsable.telefono">
+				  	</td>
+					<td>
+					    <button class="btn btn-info btn-sm " type="button" (click)="actualizarRegistros(responsable)">actualizar</button>
+		  			</td>
+					<td>
+					    <button class="btn btn-danger btn-sm " type="button" (click)="borrarRegistros(responsable)">eliminar</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

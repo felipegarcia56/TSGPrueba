@@ -1,0 +1,38 @@
+<div class="container card">
+	<div class="row p-3 mx-auto">
+		<h5 class="text-center">Estados</h5>
+	</div>
+	<div class="row p-3">
+		<form class="form-inline" [formGroup]="createForm" (ngSubmit)="crearEstados(createForm.value)">
+			<div class="form-group" style="display: contents;">
+				<label class="label label-default px-3">Descripcion</label>
+				<input class="form-control form-control-sm px-3" type="text" formControlName="descripcion">
+				<button class="btn btn-sm btn-success px-3" type="submit">Crear</button>	
+			</div>
+		</form>	
+	</div>
+	<div class="row" style="position: relative;max-height: 250px; overflow-y: auto">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+				  	<th scope="col">Descripcion</th>
+				  	<th scope="col">Actualizar</th>
+				  	<th scope="col">Eliminar</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor='let estado of estados'>
+					<td>
+				    	<input class="form-control form-control-sm" type="text" [(ngModel)]="estado.descripcion">
+				  	</td>
+					<td>
+					    <button class="btn btn-info btn-sm " type="button" (click)="actualizarEstados(estado.id,estado.descripcion)">actualizar</button>
+		  			</td>
+					<td>
+					    <button class="btn btn-danger btn-sm " type="button" (click)="borrarEstados(estado.id)">eliminar</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
