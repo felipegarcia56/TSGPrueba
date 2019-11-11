@@ -35,9 +35,10 @@ export class ProveedorComponent implements OnInit {
 			(data)=>{
 				this.proveedores = [];
 				let response = data["response"];
-				
-				for(let i = 0; i < response.length; i++){
-					this.proveedores.push(new Proveedor(response[i]["id"],response[i]["descripcion"]));
+				if(typeof response == "object"){				
+					for(let i = 0; i < response.length; i++){
+						this.proveedores.push(new Proveedor(response[i]["id"],response[i]["descripcion"]));
+					}
 				}
 			},(error)=>{
 				console.log(error);

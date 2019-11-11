@@ -35,8 +35,10 @@ export class EstadoComponent implements OnInit {
 			(data)=>{
 				this.estados = [];
 				let response = data["response"];
-				for(let i=0;i<response.length;i++){
-					this.estados.push(new Estado(response[i]["id"],response[i]["descripcion"]));
+				if(typeof response == "object"){
+					for(let i=0;i<response.length;i++){
+						this.estados.push(new Estado(response[i]["id"],response[i]["descripcion"]));
+					}
 				}
 			},(error)=>{
 				console.log(error);

@@ -34,8 +34,10 @@ export class MarcaComponent implements OnInit {
 			(data)=>{
 				this.marcas = [];
 				let response = data['response'];
-				for(let i = 0; i<response.length;i++){
-					this.marcas.push(new Marca(response[i]["id"],response[i]["descripcion"]));
+				if(typeof response == "object"){
+					for(let i = 0; i<response.length;i++){
+						this.marcas.push(new Marca(response[i]["id"],response[i]["descripcion"]));
+					}
 				}
 			},(error)=>{
 				console.log(error);

@@ -34,8 +34,10 @@ export class TipoComponent implements OnInit {
 			(data) => {
 				this.tipos = [];
 				let response = data["response"];
-				for (let i = 0; i< response.length; i++){
-					this.tipos.push(new TipoRecurso(response[i]["id"],response[i]["descripcion"]));
+				if(typeof response == "object"){				
+					for (let i = 0; i< response.length; i++){
+						this.tipos.push(new TipoRecurso(response[i]["id"],response[i]["descripcion"]));
+					}
 				}
 			},(error)=>{
 				alert("hubo un error inesperad");
