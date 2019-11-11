@@ -109,5 +109,7 @@ class RecursoService(APIView):
                     return Response({"response":"no se encontraron registros"},404)
             else:
                 return Response({"response":"todos los parametros son requeridos"},400)
+        except IntegrityError:
+            return Response({"error":"error de integridad revise la asignación"},500)
         except Exception as e:
             return Response({"error":e},500)

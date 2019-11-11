@@ -134,6 +134,7 @@ export class RecursoComponent implements OnInit {
 			(data)=>{
 				this.obtenerRecursos();
 			},(error)=>{
+				alert(error["error"]["error"]);
 				console.log(error);
 			}
 		)
