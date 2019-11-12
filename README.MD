@@ -18,7 +18,8 @@
 ## Despliegue API angular
 
  1. Ingrese al directorio TSGRecursosFront
- 2. ejecute el comando ***"ng serve -o"***
+ 2. ejecute el comando ***"npm install"*** 
+ 3. ejecute el comando ***"ng serve -o"***
 
 ## Nota
 
