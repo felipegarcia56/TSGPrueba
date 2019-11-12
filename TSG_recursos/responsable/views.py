@@ -27,7 +27,7 @@ class ResponsableService(APIView):
             data = request.data
             if "telefono" in data.keys():
 
-                if(data["telefono"] == ""):
+                if(data["telefono"] == "" and data["telefono"]):
                     raise ValueError;
 
                 responsable = Responsable(telefono=data["telefono"])
