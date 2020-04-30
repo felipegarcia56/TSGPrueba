@@ -21,7 +21,7 @@
     "@angular/router": "~8.2.13",
     "bootstrap": "^4.3.1",
     "core-js": "^2.5.4",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "phaser3-project-template": "^1.0.9",
     "rxjs": "~6.5.3",
     "tslib": "^1.9.0",
